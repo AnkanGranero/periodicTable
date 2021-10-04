@@ -12,7 +12,7 @@
 
 <script>
 import PeriodicTable from "./components/PeriodicTable.vue";
-import periodicJson from "@/periodic-table-data.json";
+import periodicJson from "@/assets/periodic-table-data.json";
 
 export default {
   name: "App",

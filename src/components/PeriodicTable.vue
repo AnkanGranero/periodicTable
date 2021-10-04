@@ -8,7 +8,7 @@
         'grid-column': element.column,
         'grid-row': customRowOrder(element.row),
       }"
-      :class="selectedGroup === element.block ? [active, element.block] : ''"
+      :class="[element.block, element.block === selectedGroup ? 'active' : '']"
       @click="clickOnBlock(element.block)"
     >
       <span> {{ element.atomicNumber }}</span>
@@ -55,7 +55,12 @@ export default {
   },
 };
 </script>
-<style>
+<style lang="scss">
+$red: #fa0000;
+$yellow: #fbff00;
+$blue: #67c0ff;
+$green: #92dd92;
+
 .table {
   display: inline-grid;
   grid-template-columns: repeat(18, 7%);
@@ -73,15 +78,27 @@ export default {
 }
 
 .s {
-  background: red;
+  background: rgba($red, 0.5);
+  &.active {
+    background: $red;
+  }
 }
 .p {
-  background: yellow;
+  background: rgba($yellow, 0.5);
+  &.active {
+    background: $yellow;
+  }
 }
 .d {
-  background: rgb(103, 191, 255);
+  background: rgba($blue, 0.5);
+  &.active {
+    background: $blue;
+  }
 }
 .f {
-  background: rgb(149, 210, 149);
+  background: rgba($green, 0.5);
+  &.active {
+    background: $green;
+  }
 }
 </style>
