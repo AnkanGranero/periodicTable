@@ -1,26 +1,49 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js App" />
+  <div class="main-page">
+    <PeriodicTable
+      :periodic-table-data="periodicJson"
+      :invertedRowOrder="invertedRowOrder"
+    />
+    <button class="invert-button" @click="invertedRowOrder = !invertedRowOrder">
+      INVERT
+    </button>
+  </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import PeriodicTable from "./components/PeriodicTable.vue";
+import periodicJson from "@/periodic-table-data.json";
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
+    PeriodicTable,
+  },
+  data() {
+    return {
+      invertedRowOrder: false,
+      periodicJson,
+    };
   },
 };
 </script>
 
 <style>
+html,
+body,
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  height: 100%;
+}
+.main-page {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: column;
+  height: 100%;
+}
+.invert-button {
+  height: 10%;
+  width: 20%;
+  font-size: 2rem;
 }
 </style>
